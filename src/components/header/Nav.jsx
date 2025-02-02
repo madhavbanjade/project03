@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import { MdArrowDropDown } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { button } from "framer-motion/client";
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,25 +21,33 @@ const Nav = () => {
   const handleDropDown = (dropDown) => {
     setOpenDropDown(openDropDown === dropDown ? null : dropDown);
   };
+  const dropDown = () => {
+    setOpenDropDown(false);
+  };
+
+  const dropDownVariants = {
+    hidden: { height: 0, opacity: 0, overflow: "hidden" },
+    visible: { height: "auto", opacity: 1 },
+  };
 
   return (
+    <div className="">
+      <nav className=" bg-white shadow-md flex items-center justify-between p-4 w-full font-semibold ">
+        {/* Overlay for mobile menu */}
+        {isOpen && (
+          <div
+            className="absolute inset-0 bg-black opacity-50 z-40 lg:hidden"
+            onClick={closeMenu}
+          ></div>
+        )}
 
-<div className="">
-<nav className="bg-white shadow-md flex items-center justify-between p-4 w-full ">
-      {/* Overlay for mobile menu */}
-      {isOpen && (
-        <div
-          className="absolute inset-0 bg-black opacity-50 z-40 lg:hidden"
-          onClick={closeMenu}
-        ></div>
-      )}
+        {/* Logo Section */}
+        <div className="flex-shrink-0 lg:ml-[6%] space-x-2">
+          <img src="/GOOD LIFE FOOD.png" alt="Logo" className="h-14 lg:h-18" />
+        </div>
 
-      {/* Logo Section */}
-      <div className="flex-shrink-0 lg:ml-[6%] space-x-2">
-        <img src="" alt="Logo" className="h-14 lg:h-18" />
-      </div>
+        {/* Hamburger Menu and Navigation Links */}
 
-      {/* Hamburger Menu and Navigation Links */}
         <div className="flex items-center ml-[50%] lg:ml-0 space-x-2 lg:space-x-0">
           {/* Hamburger Menu */}
           <button
@@ -73,62 +84,83 @@ const Nav = () => {
                 className="self-end mb-4 hover:cursor-pointer lg:hidden"
                 onClick={closeMenu}
               >
-                <IoCloseCircle className="text-3xl text-red-500" />
+                <IoCloseCircle className="text-3xl text-[#e53424]" />
               </button>
               <li>
-                <a
-                  href="#"
-                  className="block px-2 py-2 text-black hover:text-red-500"
+                <Link
+                  onClick={closeMenu}
+                  to="/"
+                  className="block px-2 py-2 text-black hover:text-[#e53424]"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li className="relative">
                 <button
-                  className="flex items-center text-black hover:text-red-500"
+                  className="flex items-center text-black hover:text-[#e53424]"
                   onClick={() => handleDropDown("about")}
                 >
                   <span className="block px-2 py-2">About Us</span>
                   <MdArrowDropDown className="text-xl" />
                 </button>
-                {openDropDown === "about" && (
-                  <div className="absolute ml-28 lg:ml-0 bg-white shadow-lg lg:w-[30vh] border border-t-2 border-t-red-400 rounded-md mt-2 lg:mt-4">
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-black hover:text-red-500"
-                    >
-                      About Company
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-black hover:text-red-500"
-                    >
-                      Employees
-                    </a>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-black hover:text-red-500"
-                    >
-                      History
-                    </a>
-                  </div>
-                )}
+                <motion.div
+                  initial=""
+                  animate={openDropDown === "about" ? "visible" : "hidden"}
+                  variants={dropDownVariants}
+                  className="absolute text-start ml-28 lg:ml-0 bg-white shadow-lg lg:w-[30vh] border border-t-2 border-t-[#e53424] rounded-md mt-2 lg:mt-4 overflow-hidden "
+                >
+                  {openDropDown === "about" && (
+                    <button onClick={dropDown}>
+                      {" "}
+                      <Link
+                        onClick={closeMenu}
+                        to="about-us"
+                        className="block px-4 py-2 text-black hover:text-[#e53424]"
+                      >
+                        About Company
+                      </Link>
+                      <Link
+                        onClick={dropDown}
+                        className="block px-4 py-2 text-black hover:text-[#e53424]"
+                      >
+                        Employees
+                      </Link>
+                      <Link
+                        onClick={dropDown}
+                        className="block px-4 py-2 text-black hover:text-[#e53424]"
+                      >
+                        History
+                      </Link>
+                    </button>
+                  )}
+                </motion.div>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block px-2 py-2 text-black hover:text-red-500"
+                <Link
+                  onClick={closeMenu}
+                  to="product"
+                  className="block px-2 py-2 text-black hover:text-[#e53424]"
+                >
+                  Product
+                </Link>
+              </li>
+              <li>
+                <Link
+                  onClick={closeMenu}
+                  to="market"
+                  className="block px-2 py-2 text-black hover:text-[#e53424]"
                 >
                   Market
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block px-2 py-2 text-black hover:text-red-500"
+                <Link
+                  onClick={closeMenu}
+                  to="contact"
+                  className="block px-2 py-2 text-black hover:text-[#e53424]"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -136,14 +168,26 @@ const Nav = () => {
 
         {/* Cart and User Section */}
         <div className="flex items-center space-x-4 lg:mr-10">
-          <button>
-            <FaShoppingCart className="text-xl text-red-500 hover:text-black" />
+          <button onClick={() => handleDropDown("user")}>
+            <FaUser className="text-xl text-[#e53424] hover:text-black" />
+
+            {openDropDown === "user" && (
+    <div className="absolute lg:right-20 right-8 z-10 flex flex-col bg-white border border-gray-200 shadow-lg mt-6 border-t-[#e53424] rounded-xl">
+      <Link to="/register" className="block px-4 py-2 text-black hover:text-[#e53424]">
+        Register
+      </Link>
+      <Link to="/login" className="block px-4 py-2 text-black hover:text-[#e53424]">
+        Login
+      </Link>
+    </div>
+  )}
           </button>
-          <button>
-            <FaUser className="text-xl text-red-500 hover:text-black" />
+
+          <button onClick={dropDown}>
+            <FaShoppingCart className="text-xl text-[#e53424] hover:text-black" />
           </button>
         </div>
-    </nav>
+      </nav>
     </div>
   );
 };

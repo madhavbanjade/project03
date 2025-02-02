@@ -7,9 +7,9 @@ import Nav from "./Nav";
 
 const Header = () => {
   return (
-    <header className="">
+    <header className="font-quicksand">
       {/* Top Bar */}
-      <div className="bg-red-500 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between w-full h-auto lg:h-[8vh] p-2">
+      <div className="bg-[#e53424] text-white flex flex-col lg:flex-row lg:items-center lg:justify-between w-full h-auto lg:h-[8vh] p-2">
         {/* Contact Info */}
         <div className="flex flex-col lg:flex-row lg:space-x-8 space-y-2 lg:space-y-0 lg:ml-[8%]">
           <span className="flex items-center space-x-2">

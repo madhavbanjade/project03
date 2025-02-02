@@ -22,7 +22,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <div className="text-white bg-red-500 w-full h-auto bottom-0 ">
+    <div className="text-white bg-[#e53424] w-full h-auto bottom-0 font-quicksand">
       <div className="p-6 flex flex-col space-y-6 lg:space-y-0 lg:flex-row lg:justify-around lg:items-start">
         {/* Contact Section */}
         <div className="w-full lg:w-[25%] lg:ml-20">
@@ -129,7 +129,7 @@ const Footer = () => {
         {/* Logo & Social Media */}
         <div className="flex justify-between lg:mr-12 lg:flex-col lg:space-y-8">
           <div className="w-20">
-            <img src="" alt="Logo" />
+            <img src="/light-logo.png" alt="Logo" />
             <p className="w-28 mt-2">product name</p>
           </div>
           <div className="flex space-x-3">
