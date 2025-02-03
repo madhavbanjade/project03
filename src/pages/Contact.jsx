@@ -124,7 +124,7 @@ const Contact = () => {
               placeholder="message"
               className="p-2 rounded-md"
             ></textarea>
-            <button className="text-white bg-[#e53424]  p-4">Submit</button>
+            <button className="text-white bg-[#e53424] rounded-lg     p-4">Submit</button>
           </form>
         </div>
       </div>

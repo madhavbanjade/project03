@@ -32,7 +32,7 @@ const Nav = () => {
 
   return (
     <div className="">
-      <nav className=" bg-white shadow-md flex items-center justify-between p-4 w-full font-semibold ">
+      <nav className="shadow-md flex items-center justify-between p-4 w-full font-semibold ">
         {/* Overlay for mobile menu */}
         {isOpen && (
           <div
@@ -42,9 +42,15 @@ const Nav = () => {
         )}
 
         {/* Logo Section */}
-        <div className="flex-shrink-0 lg:ml-[6%] space-x-2">
-          <img src="/GOOD LIFE FOOD.png" alt="Logo" className="h-14 lg:h-18" />
-        </div>
+        <Link to="/">
+          <div className="flex-shrink-0 lg:ml-[6%] space-x-2">
+            <img
+              src="/GOOD LIFE FOOD.png"
+              alt="Logo"
+              className="h-14 lg:h-18"
+            />
+          </div>
+        </Link>
 
         {/* Hamburger Menu and Navigation Links */}
 
@@ -172,15 +178,21 @@ const Nav = () => {
             <FaUser className="text-xl text-[#e53424] hover:text-black" />
 
             {openDropDown === "user" && (
-    <div className="absolute lg:right-20 right-8 z-10 flex flex-col bg-white border border-gray-200 shadow-lg mt-6 border-t-[#e53424] rounded-xl">
-      <Link to="/register" className="block px-4 py-2 text-black hover:text-[#e53424]">
-        Register
-      </Link>
-      <Link to="/login" className="block px-4 py-2 text-black hover:text-[#e53424]">
-        Login
-      </Link>
-    </div>
-  )}
+              <div className="absolute lg:right-20 right-8 z-10 flex flex-col bg-white border border-gray-200 shadow-lg mt-6 border-t-[#e53424] rounded-xl">
+                <Link
+                  to="register"
+                  className="block px-4 py-2 text-black hover:text-[#e53424]"
+                >
+                  Register
+                </Link>
+                <Link
+                  to="login"
+                  className="block px-4 py-2 text-black hover:text-[#e53424]"
+                >
+                  Login
+                </Link>
+              </div>
+            )}
           </button>
 
           <button onClick={dropDown}>

@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import {
@@ -13,6 +13,26 @@ import Contact from "./pages/Contact.jsx";
 import About from "./pages/About.jsx";
 import Market from "./pages/Market.jsx";
 import Product from "./pages/product/Product.jsx";
+import Register from "./pages/Register.jsx";
+import Login from "./pages/Login.jsx";
+import Aos from "aos";
+import "aos/dist/aos.css"; // Import AOS CSS
+
+const App = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, // Animation duration
+      easing: "ease-in-out", // Animation easing
+      once: false, // Whether animation should happen only once
+    });
+  }, []);
+
+  return (
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  );
+};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,12 +42,10 @@ const router = createBrowserRouter(
       <Route path="contact" element={<Contact />} />
       <Route path="market" element={<Market />} />
       <Route path="product" element={<Product />} />
+      <Route path="register" element={<Register />} />
+      <Route path="login" element={<Login />} />
     </Route>
   )
 );
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
-);
+createRoot(document.getElementById("root")).render(<App />);

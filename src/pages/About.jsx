@@ -30,9 +30,11 @@ const About = () => {
         />
       </div>
       <div className="flex font-quicksand flex-col lg:flex-row space-x-4 min-h-fit p-12 lg:items-center lg:justify-center mb-4">
-        <div className="lg:w-[40%] h-auto space-y-2">
+        <div data-aos="fade-right" className="lg:w-[40%] h-auto space-y-2 ">
           <h1 className="text-3xl font-bold ">Welcome to Good Life</h1>
-          <h2 className="ml-2 text-[#e53424] text-2xl">Great taste Neturally</h2>
+          <h2 className="ml-2 text-[#e53424] text-2xl">
+            Great taste Neturally
+          </h2>
           <p className="ml-2 text-sm text-[#666666]">
             Good Life Food Product was established on 1st September 2006 with
             crystal clear motive to produce quality products of the Cookies in
@@ -61,7 +63,10 @@ const About = () => {
             its customers.
           </p>
         </div>
-        <div className="relative w-full lg:w-[40%] mt-4 lg:mt-0">
+        <div
+          data-aos="fade-left"
+          className="relative w-full lg:w-[40%] mt-4 lg:mt-0"
+        >
           <img
             src="/about-goodlife.png"
             alt=""
